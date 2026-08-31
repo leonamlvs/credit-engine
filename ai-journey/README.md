@@ -1,6 +1,6 @@
 # AI Journey
 
-This folder documents meaningful AI collaboration during the challenge.
+This folder documents meaningful AI collaboration during project development.
 
 ## Tools
 
@@ -19,6 +19,5 @@ focused.
 `learnings.md` captures what worked, failures found by execution, and changes that would improve a
 future AI-assisted project.
 
-The implementation is complete against the approved local contract. Verification against the six
-official samples remains unavailable because the referenced `expected-output.json` was
-not supplied; no replacement fixture was invented.
+The implementation is complete against the accepted project contract. Repository-owned integration
+scenarios verify representative responses for every customer cluster through the real HTTP stack.

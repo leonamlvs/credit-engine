@@ -1,4 +1,4 @@
-# BTG Pactual Credit Engine
+# Credit Engine
 
 Data-driven credit classification API built with Node.js, TypeScript, Express, and Zod.
 
@@ -9,8 +9,8 @@ personalized credit limit.
 
 Deployed on Render. As it's hosted on the free tier, the service may take a few seconds to wake up after inactivity.
 
-- Swagger UI: <https://btg-credit-engine.onrender.com/docs>
-- Health check: <https://btg-credit-engine.onrender.com/health>
+- Swagger UI: <https://credit-engine.onrender.com/docs>
+- Health check: <https://credit-engine.onrender.com/health>
 
 ## Run with Docker
 

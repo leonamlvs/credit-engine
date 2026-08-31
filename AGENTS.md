@@ -2,7 +2,7 @@
 
 ## Project
 
-BTG Pactual Credit Engine backend challenge.
+Data-driven credit classification API.
 
 ## Sources of truth
 
@@ -13,7 +13,7 @@ Read these before implementing business behavior:
 3. `specs/credit-engine/acceptance.md`
 4. `specs/credit-engine/plan.md`
 
-Never invent missing business requirements or official fixtures.
+Never invent missing business requirements or undocumented fixtures.
 
 ## Architecture boundaries
 

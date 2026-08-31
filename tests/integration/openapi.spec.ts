@@ -11,6 +11,10 @@ describe('GET /openapi.json', () => {
     expect(response.status).toBe(200);
     expect(document).toEqual(
       expect.objectContaining({
+        info: expect.objectContaining({
+          title: 'Credit Engine API',
+          description: 'Data-driven credit classification API.',
+        }),
         paths: expect.objectContaining({
           '/customers/classify': expect.objectContaining({
             post: expect.objectContaining({
