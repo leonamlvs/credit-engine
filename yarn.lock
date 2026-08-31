@@ -3156,38 +3156,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"btg-credit-engine@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "btg-credit-engine@workspace:."
-  dependencies:
-    "@asteasolutions/zod-to-openapi": "npm:^9.1.0"
-    "@babel/core": "npm:^8.0.1"
-    "@babel/preset-env": "npm:^8.0.2"
-    "@babel/preset-typescript": "npm:^8.0.1"
-    "@eslint/js": "npm:^10.0.1"
-    "@jest/globals": "npm:30"
-    "@types/express": "npm:^5.0.6"
-    "@types/node": "npm:24"
-    "@types/supertest": "npm:^7.2.1"
-    "@types/swagger-ui-express": "npm:^4.1.8"
-    babel-jest: "npm:30"
-    eslint: "npm:^10.8.1"
-    eslint-config-prettier: "npm:^10.1.8"
-    express: "npm:5"
-    helmet: "npm:^8.3.0"
-    jest: "npm:30"
-    pino: "npm:^10.3.1"
-    pino-http: "npm:^11.0.0"
-    prettier: "npm:^3.9.6"
-    supertest: "npm:^7.2.2"
-    swagger-ui-express: "npm:^5.0.1"
-    tsx: "npm:^4.23.12"
-    typescript: "npm:6.0.3"
-    typescript-eslint: "npm:^8.67.0"
-    zod: "npm:4"
-  languageName: unknown
-  linkType: soft
-
 "buffer-from@npm:^1.0.0":
   version: 1.1.2
   resolution: "buffer-from@npm:1.1.2"
@@ -3409,6 +3377,38 @@ __metadata:
   checksum: 10c0/1ccfe07f47f7d8a14e615c5e7adb3b9d8b3dcb2f228fd0d00a59723dbf9b944a4a3f4ceb96c1861cb9fb9838d486163ceebaec3323d15c6d456b45d2a2a03583
   languageName: node
   linkType: hard
+
+"credit-engine@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "credit-engine@workspace:."
+  dependencies:
+    "@asteasolutions/zod-to-openapi": "npm:^9.1.0"
+    "@babel/core": "npm:^8.0.1"
+    "@babel/preset-env": "npm:^8.0.2"
+    "@babel/preset-typescript": "npm:^8.0.1"
+    "@eslint/js": "npm:^10.0.1"
+    "@jest/globals": "npm:30"
+    "@types/express": "npm:^5.0.6"
+    "@types/node": "npm:24"
+    "@types/supertest": "npm:^7.2.1"
+    "@types/swagger-ui-express": "npm:^4.1.8"
+    babel-jest: "npm:30"
+    eslint: "npm:^10.8.1"
+    eslint-config-prettier: "npm:^10.1.8"
+    express: "npm:5"
+    helmet: "npm:^8.3.0"
+    jest: "npm:30"
+    pino: "npm:^10.3.1"
+    pino-http: "npm:^11.0.0"
+    prettier: "npm:^3.9.6"
+    supertest: "npm:^7.2.2"
+    swagger-ui-express: "npm:^5.0.1"
+    tsx: "npm:^4.23.12"
+    typescript: "npm:6.0.3"
+    typescript-eslint: "npm:^8.67.0"
+    zod: "npm:4"
+  languageName: unknown
+  linkType: soft
 
 "cross-spawn@npm:^7.0.3, cross-spawn@npm:^7.0.6":
   version: 7.0.6

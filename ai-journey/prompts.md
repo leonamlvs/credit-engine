@@ -9,13 +9,13 @@ Selected interactions only — not a full log.
 **What I asked**
 
 - Extract requirements before writing business code.
-- Separate source requirements, assumptions, and acceptance criteria.
+- Separate requirements, contract decisions, and acceptance criteria.
 - Record ambiguities instead of silently resolving them.
 - Do not implement during planning.
 
 **What happened**
 
-- Exposed missing `expected-output.json`, missing output contract, rounding ambiguity, and undefined HTTP error behavior.
+- Exposed an undefined output contract, rounding ambiguity, and unspecified HTTP error behavior.
 - Created the specification baseline used for later planning and implementation.
 
 **Iteration**
@@ -41,7 +41,7 @@ Selected interactions only — not a full log.
 
 **Iteration**
 
-- Kept the conflict blocked until a human decision was made.
+- Kept the conflict pending until a human decision was made.
 - Learned to explicitly say **do not implement** when asking for a plan.
 
 ---
@@ -52,17 +52,17 @@ Selected interactions only — not a full log.
 
 **What I asked**
 
-- List every unresolved issue as human decision, external blocker, resolved interpretation, or implementation detail.
+- List every unresolved issue as a human decision, project constraint, resolved interpretation, or implementation detail.
 - Show options and trade-offs without choosing for me.
 
 **What happened**
 
 - Consolidated decisions about rounding, approval, output fields, monetary representation, HTTP errors, acronym boundaries, and validation scope.
-- Kept the missing official fixture as an external blocker instead of fabricating it.
+- Defined repository-owned representative scenarios instead of depending on unavailable examples.
 
 **Iteration**
 
-- Preferred conventional, unsurprising behavior when the source was silent.
+- Preferred conventional, unsurprising behavior when the project contract was silent.
 - Avoided extra restrictions not explicitly required, such as a UF enum or two-character state validation.
 
 ---
@@ -97,7 +97,7 @@ Selected interactions only — not a full log.
 
 - Implement the approved milestones without reopening business decisions.
 - Preserve data-driven rules and verification gates.
-- Do not invent the official fixture.
+- Use only the accepted response contract and repository-owned scenarios.
 
 **What happened**
 

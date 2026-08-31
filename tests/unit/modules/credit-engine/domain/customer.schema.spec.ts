@@ -21,7 +21,7 @@ describe('CustomerSchema', () => {
   it('accepts the approved customer contract and preserves additional properties', () => {
     const input = {
       ...validCustomer,
-      source: 'challenge',
+      source: 'web',
       location: { ...validCustomer.location, postal_code: '01000-000' },
     };
 

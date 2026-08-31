@@ -4,7 +4,7 @@
 
 ## Context
 
-The challenge describes the classification endpoint as stateless and does not require persistence between calls.
+The classification endpoint is stateless and does not require persistence between calls.
 
 ## Decision
 
@@ -13,5 +13,5 @@ Do not introduce a database, ORM, query builder, repository abstraction, or pers
 ## Consequences
 
 - Lower infrastructure complexity.
-- The architecture remains aligned with the supplied contract.
+- The architecture remains aligned with the project contract.
 - Persistence can only be introduced later if a concrete requirement justifies it.
