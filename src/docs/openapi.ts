@@ -80,7 +80,7 @@ export function createOpenApiDocument() {
     openapi: '3.1.0',
     info: {
       title: 'Credit Engine API',
-      version: '0.1.0',
+      version: '1.0.0',
       description: 'Data-driven credit classification API.',
     },
   });
