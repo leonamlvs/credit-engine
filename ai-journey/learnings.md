@@ -35,7 +35,7 @@
 - Always state **do not implement** when the requested output is only a plan.
 - Define allowed files, non-scope, and exit criteria in every repository-changing prompt.
 - Define the **target reader and reading time** for documentation before asking AI to write it.
-- Reserve Extra High reasoning for specification/audit work; use High for deterministic implementation.
+- Reserve Extra High reasoning for specification/audit work; use High/Medium for deterministic implementation.
 
 ## Resource efficiency
 
