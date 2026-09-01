@@ -9,8 +9,8 @@ personalized credit limit.
 
 Deployed on Render. As it's hosted on the free tier, the service may take a few seconds to wake up after inactivity.
 
-- Swagger UI: <https://credit-engine.onrender.com/docs>
-- Health check: <https://credit-engine.onrender.com/health>
+- Swagger UI: <https://credit-engine-nwlu.onrender.com/docs>
+- Health check: <https://credit-engine-nwlu.onrender.com/health>
 
 ## Run with Docker
 
