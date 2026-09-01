@@ -13,6 +13,7 @@ describe('GET /openapi.json', () => {
       expect.objectContaining({
         info: expect.objectContaining({
           title: 'Credit Engine API',
+          version: '1.0.0',
           description: 'Data-driven credit classification API.',
         }),
         paths: expect.objectContaining({
