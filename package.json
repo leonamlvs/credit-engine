@@ -1,8 +1,8 @@
 {
-  "name": "btg-credit-engine",
-  "version": "0.1.0",
+  "name": "credit-engine",
+  "version": "1.0.0",
   "private": true,
-  "description": "BTG Pactual Credit Engine backend challenge",
+  "description": "Data-driven credit classification API",
   "license": "UNLICENSED",
   "engines": {
     "node": "24.19.0"

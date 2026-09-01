@@ -79,9 +79,9 @@ export function createOpenApiDocument() {
   return generator.generateDocument({
     openapi: '3.1.0',
     info: {
-      title: 'BTG Pactual Credit Engine API',
-      version: '0.1.0',
-      description: 'Backend challenge API.',
+      title: 'Credit Engine API',
+      version: '1.0.0',
+      description: 'Data-driven credit classification API.',
     },
   });
 }

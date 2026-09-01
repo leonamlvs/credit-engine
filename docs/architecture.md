@@ -32,7 +32,7 @@ startup JSON parsing -> Zod validation -> immutable RuleConfiguration
                                   generic condition evaluation
 ```
 
-Published thresholds, priorities, keywords, multipliers, income values, penalties, and limits live
+Configured thresholds, priorities, keywords, multipliers, income values, penalties, and limits live
 in the versioned JSON document. Evaluator code contains only the bounded operators approved by the
 technical plan.
 
@@ -61,7 +61,7 @@ are also registered with OpenAPI so runtime and documented contracts remain alig
 ## Engineering architecture
 
 ```text
-challenge source
+project requirements
       |
       v
 requirements -> acceptance -> technical plan -> tasks

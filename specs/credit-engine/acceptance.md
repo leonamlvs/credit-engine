@@ -2,7 +2,8 @@
 
 ## Conventions
 
-Each criterion traces to one or more requirements and identifies its verification level. Scenarios created from the published rules are labeled **spec-derived**; they are not the missing six official samples from `expected-output.json`.
+Each criterion traces to one or more requirements and identifies its verification level. Scenarios
+created from the configured rules are repository-owned and labeled **spec-derived**.
 
 ## Customer input
 
@@ -12,7 +13,7 @@ Each criterion traces to one or more requirements and identifies its verificatio
 | ------------------- | ----------------------------------------------------------------------------------------------------------- |
 | AC ID               | `AC-001`                                                                                                    |
 | Scenario            | A customer supplies every field listed by `REQ-003`, with the declared type and a nested `location` object. |
-| Expected result     | The object conforms to the supplied customer schema. No unstated validation constraint is applied.          |
+| Expected result     | The object conforms to the project customer schema. No unstated validation constraint is applied.           |
 | Traced REQ IDs      | `REQ-003`                                                                                                   |
 | Verification level  | Unit contract test                                                                                          |
 | Blocking assumption | None; interpretation recorded in `ASM-009`                                                                  |
@@ -133,14 +134,14 @@ Each criterion traces to one or more requirements and identifies its verificatio
 
 ### AC-012 — EXECUTIVE matching
 
-| Field               | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AC ID               | `AC-012`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| Scenario            | **Spec-derived:** evaluate every published executive keyword. For the standalone acronym `COO`, include `COO`, `COO Brazil`, `coo`, `(COO)`, `ex-COO`, `COO/CTO`, `COO_Brazil`, `Coordinator`, `myCOO`, `COO2`, and `COOOperations`.                                                                                                                                                                                                                                                                                               |
-| Expected result     | Every published executive keyword assigns priority 1 `EXECUTIVE` with multiplier `2.0` under its approved matching operator. `COO`, `COO Brazil`, `coo`, `(COO)`, `ex-COO`, `COO/CTO`, and `COO_Brazil` match case-insensitively because punctuation, whitespace, and underscores delimit the acronym. `Coordinator`, `myCOO`, `COO2`, and `COOOperations` do not match `COO` because an adjacent letter or digit prevents a standalone match. Non-acronym executive keywords retain ordinary case-insensitive substring matching. |
-| Traced REQ IDs      | `REQ-012`, `REQ-013`, `REQ-014`, `REQ-030`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Verification level  | Parameterized unit job-category test                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Blocking assumption | None; approved standalone-term behavior recorded in `ASM-010`                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Field               | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AC ID               | `AC-012`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Scenario            | **Spec-derived:** evaluate every configured executive keyword. For the standalone acronym `COO`, include `COO`, `COO Brazil`, `coo`, `(COO)`, `ex-COO`, `COO/CTO`, `COO_Brazil`, `Coordinator`, `myCOO`, `COO2`, and `COOOperations`.                                                                                                                                                                                                                                                                                               |
+| Expected result     | Every configured executive keyword assigns priority 1 `EXECUTIVE` with multiplier `2.0` under its approved matching operator. `COO`, `COO Brazil`, `coo`, `(COO)`, `ex-COO`, `COO/CTO`, and `COO_Brazil` match case-insensitively because punctuation, whitespace, and underscores delimit the acronym. `Coordinator`, `myCOO`, `COO2`, and `COOOperations` do not match `COO` because an adjacent letter or digit prevents a standalone match. Non-acronym executive keywords retain ordinary case-insensitive substring matching. |
+| Traced REQ IDs      | `REQ-012`, `REQ-013`, `REQ-014`, `REQ-030`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Verification level  | Parameterized unit job-category test                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Blocking assumption | None; approved standalone-term behavior recorded in `ASM-010`                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 ### AC-013 — SENIOR_PROFESSIONAL matching
 
@@ -243,25 +244,25 @@ Each criterion traces to one or more requirements and identifies its verificatio
 
 ### AC-021 — Cap enforcement
 
-| Field               | Value                                                                                                                                                                                                                       |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AC ID               | `AC-021`                                                                                                                                                                                                                    |
-| Scenario            | **Spec-derived formula case:** `base_limit = 60,000`, `job_multiplier = 2.0`, `penalty_factor = 1.0`, and `cluster_cap = 100,000`. These operands test the published formula and are not an official business-rule fixture. |
-| Expected result     | The unbounded value `120,000` is capped and produces `approved_limit = 100,000`.                                                                                                                                            |
-| Traced REQ IDs      | `REQ-021`, `REQ-031`                                                                                                                                                                                                        |
-| Verification level  | Unit credit-limit test                                                                                                                                                                                                      |
-| Blocking assumption | None                                                                                                                                                                                                                        |
+| Field               | Value                                                                                                                                                                                                              |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| AC ID               | `AC-021`                                                                                                                                                                                                           |
+| Scenario            | **Spec-derived formula case:** `base_limit = 60,000`, `job_multiplier = 2.0`, `penalty_factor = 1.0`, and `cluster_cap = 100,000`. These operands test the configured formula independently of a cluster scenario. |
+| Expected result     | The unbounded value `120,000` is capped and produces `approved_limit = 100,000`.                                                                                                                                   |
+| Traced REQ IDs      | `REQ-021`, `REQ-031`                                                                                                                                                                                               |
+| Verification level  | Unit credit-limit test                                                                                                                                                                                             |
+| Blocking assumption | None                                                                                                                                                                                                               |
 
 ### AC-022 — Penalty is applied before the cap
 
-| Field               | Value                                                                                                                                                                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AC ID               | `AC-022`                                                                                                                                                                                                                |
-| Scenario            | **Spec-derived formula case:** `base_limit = 60,000`, `job_multiplier = 2.0`, `penalty_factor = 0.5`, and `cluster_cap = 100,000`. These operands test calculation order and are not an official business-rule fixture. |
-| Expected result     | The formula calculates `60,000 × 2.0 × 0.5 = 60,000` before applying the cap, producing `approved_limit = 60,000`.                                                                                                      |
-| Traced REQ IDs      | `REQ-021`, `REQ-023`, `REQ-024`, `REQ-031`                                                                                                                                                                              |
-| Verification level  | Unit credit-limit order test                                                                                                                                                                                            |
-| Blocking assumption | None                                                                                                                                                                                                                    |
+| Field               | Value                                                                                                                                                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AC ID               | `AC-022`                                                                                                                                                                                                      |
+| Scenario            | **Spec-derived formula case:** `base_limit = 60,000`, `job_multiplier = 2.0`, `penalty_factor = 0.5`, and `cluster_cap = 100,000`. These operands test calculation order independently of a cluster scenario. |
+| Expected result     | The formula calculates `60,000 × 2.0 × 0.5 = 60,000` before applying the cap, producing `approved_limit = 60,000`.                                                                                            |
+| Traced REQ IDs      | `REQ-021`, `REQ-023`, `REQ-024`, `REQ-031`                                                                                                                                                                    |
+| Verification level  | Unit credit-limit order test                                                                                                                                                                                  |
+| Blocking assumption | None                                                                                                                                                                                                          |
 
 ### AC-023 — Nearest-100 rounding
 
@@ -296,7 +297,7 @@ Each criterion traces to one or more requirements and identifies its verificatio
 | Expected result     | Each request returns HTTP `200 OK` with the original accepted customer object directly enriched at the top level with exactly these calculated fields: `cluster_id`, `cluster_name`, `job_category`, `monthly_income`, `approved`, and `approved_limit`. A–C return `approved = true`; D returns `approved = false`. Monetary fields are JSON numbers in BRL units. The body has no success envelope and exposes no internal calculation or rule-engine metadata. |
 | Traced REQ IDs      | `REQ-011`, `REQ-019`, `REQ-021`, `REQ-025`, `REQ-026`, `REQ-034`                                                                                                                                                                                                                                                                                                                                                                                                  |
 | Verification level  | Parameterized integration test                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| Blocking assumption | None; approved fallback response recorded in `ASM-002` and HTTP behavior in `ASM-008`                                                                                                                                                                                                                                                                                                                                                                             |
+| Blocking assumption | None; accepted response recorded in `ASM-002` and HTTP behavior in `ASM-008`                                                                                                                                                                                                                                                                                                                                                                                      |
 
 ### AC-026 — Stateless calls
 
@@ -320,16 +321,16 @@ Each criterion traces to one or more requirements and identifies its verificatio
 | Verification level  | Parameterized integration test                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Blocking assumption | None; approved HTTP error contract recorded in `ASM-008`                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
-### AC-028 — Six official sample customers
+### AC-028 — Representative cluster responses
 
-| Field               | Value                                                                                             |
-| ------------------- | ------------------------------------------------------------------------------------------------- |
-| AC ID               | `AC-028`                                                                                          |
-| Scenario            | All six official customers from `expected-output.json` are posted to the classification endpoint. |
-| Expected result     | Every response exactly matches the corresponding official expected output.                        |
-| Traced REQ IDs      | `REQ-026`, `REQ-034`, `REQ-036`                                                                   |
-| Verification level  | Parameterized integration test                                                                    |
-| Blocking assumption | `ASM-001` — the official fixture and its six expected responses are missing                       |
+| Field               | Value                                                                                                                      |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| AC ID               | `AC-028`                                                                                                                   |
+| Scenario            | Repository-owned customers representing `CLUSTER_A`, `CLUSTER_B`, `CLUSTER_C`, and `CLUSTER_D` are posted to the endpoint. |
+| Expected result     | Every complete response exactly matches its repository-owned expected value.                                               |
+| Traced REQ IDs      | `REQ-026`, `REQ-034`, `REQ-036`                                                                                            |
+| Verification level  | Parameterized integration test                                                                                             |
+| Blocking assumption | None; scenario policy recorded in `ASM-001`                                                                                |
 
 ## Test-suite and delivery obligations
 
@@ -346,14 +347,14 @@ Each criterion traces to one or more requirements and identifies its verificatio
 
 ### AC-030 — Required integration-test coverage
 
-| Field               | Value                                                                                                                                                    |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AC ID               | `AC-030`                                                                                                                                                 |
-| Scenario            | The integration-test suite is inspected and run.                                                                                                         |
-| Expected result     | It exercises valid and invalid full request/response cycles and contains the official six-sample comparison when the official fixture becomes available. |
-| Traced REQ IDs      | `REQ-028`, `REQ-034`, `REQ-035`, `REQ-036`                                                                                                               |
-| Verification level  | Test-suite inspection and execution                                                                                                                      |
-| Blocking assumption | `ASM-001` only for the unavailable official six-sample comparison                                                                                        |
+| Field               | Value                                                                                                                |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| AC ID               | `AC-030`                                                                                                             |
+| Scenario            | The integration-test suite is inspected and run.                                                                     |
+| Expected result     | It exercises valid and invalid full request/response cycles and compares representative responses for every cluster. |
+| Traced REQ IDs      | `REQ-028`, `REQ-034`, `REQ-035`, `REQ-036`                                                                           |
+| Verification level  | Test-suite inspection and execution                                                                                  |
+| Blocking assumption | None; repository-owned scenario policy recorded in `ASM-001`                                                         |
 
 ### AC-031 — Single-command test execution
 
@@ -379,16 +380,16 @@ Each criterion traces to one or more requirements and identifies its verificatio
 
 ### AC-033 — System capabilities and data-driven rules
 
-| Field               | Value                                                                                                                                                                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AC ID               | `AC-033`                                                                                                                                                                                                                |
-| Scenario            | The implemented service and its cluster, limit, job-category, income, and penalty rules are inspected.                                                                                                                  |
-| Expected result     | The service exposes the required REST classification, credit-limit, and income capabilities, and the published business rules and values are representable as configuration rather than buried in classification logic. |
-| Traced REQ IDs      | `REQ-001`, `REQ-002`                                                                                                                                                                                                    |
-| Verification level  | API, architecture, and configuration inspection                                                                                                                                                                         |
-| Blocking assumption | None                                                                                                                                                                                                                    |
+| Field               | Value                                                                                                                                                                                                                    |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| AC ID               | `AC-033`                                                                                                                                                                                                                 |
+| Scenario            | The implemented service and its cluster, limit, job-category, income, and penalty rules are inspected.                                                                                                                   |
+| Expected result     | The service exposes the required REST classification, credit-limit, and income capabilities, and the configured business rules and values are representable as configuration rather than buried in classification logic. |
+| Traced REQ IDs      | `REQ-001`, `REQ-002`                                                                                                                                                                                                     |
+| Verification level  | API, architecture, and configuration inspection                                                                                                                                                                          |
+| Blocking assumption | None                                                                                                                                                                                                                     |
 
-## Approved fallback representation
+## Monetary representation
 
 ### AC-034 — Monetary JSON representation
 

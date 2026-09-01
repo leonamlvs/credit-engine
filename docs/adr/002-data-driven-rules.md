@@ -4,7 +4,7 @@
 
 ## Context
 
-The challenge explicitly requires the classification engine to be data-driven rather than burying business rules in application logic.
+The classification engine is data-driven so business rules remain outside application logic.
 
 ## Decision
 

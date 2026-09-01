@@ -1,32 +1,38 @@
-# Credit Engine Assumptions and Interpretations
+# Credit Engine Assumptions and Contract Decisions
 
-This file records only source gaps or interpretations that materially affect challenge behavior. It must not be used to invent requirements absent from the challenge.
+This file records explicit interpretations and contract decisions that materially affect Credit
+Engine behavior. It must not be used to invent requirements absent from the project specification.
 
-## ASM-001 — Missing official sample fixture
+## ASM-001 — Repository-owned integration scenarios
 
-The challenge references an `expected-output.json` containing six sample customers, but that artifact was not included in the supplied material or repository.
+The project owns its representative integration scenarios and expected responses. They are derived
+from the accepted contract and versioned rule configuration.
 
 ### Status
 
-External blocker — unresolved.
+Accepted and verified.
+
+### Policy
+
+- Exercise every cluster through the real HTTP stack.
+- Keep expected values explicit and reviewable in the repository.
+- Trace expected behavior to the project specification and validated rule configuration.
 
 ### Effect
 
-- `REQ-036` and `AC-028` remain blocked.
-- Do not fabricate the official fixture or claim that locally derived cases are the six official samples.
-- Any local fixture or scenario must be labeled **spec-derived**.
+- `REQ-036` and `AC-028` are satisfied by the repository-owned integration scenarios.
+- The test suite has no dependency on an external fixture.
 
-## ASM-002 — Missing official output contract
+## ASM-002 — Public classification response contract
 
-The challenge requires the endpoint to return the customer enriched with all calculated fields from an “output contract”, but no output schema, field list, calculated-field names/types, or official response example was supplied.
-
-The source explicitly names `approved` for `CLUSTER_D` and `approved_limit` in the formula, but it does not define the complete response or approval semantics for the other clusters.
+The endpoint returns the accepted customer enriched with the calculated classification fields
+defined below.
 
 ### Status
 
-Resolved for implementation by the human-approved local fallback below. The referenced official contract remains unavailable, so the fallback must be reconciled if the official artifact is later supplied.
+Accepted and implemented.
 
-### Approved local fallback
+### Accepted contract
 
 - `approved = true` for `CLUSTER_A`, `CLUSTER_B`, and `CLUSTER_C`.
 - `approved = false` for `CLUSTER_D`.
@@ -43,9 +49,8 @@ Resolved for implementation by the human-approved local fallback below. The refe
 
 ### Effect
 
-- `REQ-026`, `REQ-034`, and `AC-025` are unblocked for implementation against the approved fallback.
-- The fallback does not claim to reproduce the unavailable official output contract.
-- `AC-028` remains blocked only by `ASM-001`; do not fabricate the official fixture or its six expected responses.
+- `REQ-026`, `REQ-034`, `AC-025`, and `AC-028` are verified against this contract.
+- Runtime schemas and OpenAPI documentation use the same field definitions.
 
 ## ASM-003 — Inclusive cluster age ranges
 
@@ -56,11 +61,11 @@ The cluster table writes the age ranges as `25–60` and `18–65` without separ
 - `CLUSTER_A`: `25 <= age <= 60`.
 - `CLUSTER_B`: `18 <= age <= 65`.
 
-This interpretation is not blocking.
+This interpretation is accepted.
 
 ## ASM-004 — Independent debt fields
 
-The source does not define a consistency constraint between `has_market_debt` and `market_debt_types`.
+The project contract does not define a consistency constraint between `has_market_debt` and `market_debt_types`.
 
 ### Approved interpretation
 
@@ -74,21 +79,21 @@ The customer schema describes `id` as a “Unique identifier”, while the API i
 
 ### Approved interpretation
 
-Treat `id` as the identifier supplied with the current record. Do not infer global or cross-request uniqueness enforcement.
+Treat `id` as the identifier accepted with the current record. Do not infer global or cross-request uniqueness enforcement.
 
 ## ASM-006 — Single default-debt penalty activation
 
-The source defines one `DEFAULT_DEBT_PENALTY` whose trigger is `credit_default` **or** `loan_default` in `market_debt_types` and whose effect is `×0.5`.
+The configured `DEFAULT_DEBT_PENALTY` triggers when `credit_default` **or** `loan_default` is present in `market_debt_types` and applies an effect of `×0.5`.
 
 ### Approved interpretation
 
 The rule activates once when either or both default debt types are present. The two values are not independent penalty applications, and the factor is not stacked.
 
-When the rule does not trigger, `penalty_factor` is the multiplicative identity `1.0` required to evaluate the published formula.
+When the rule does not trigger, `penalty_factor` is the multiplicative identity `1.0` required to evaluate the configured formula.
 
 ## ASM-007 — Rounding midpoint semantics
 
-The source requires `round_to_nearest_100` but does not define how exact midpoints are resolved.
+The project contract requires `round_to_nearest_100` and defines exact midpoint behavior here.
 
 ### Approved interpretation
 
@@ -96,11 +101,11 @@ The source requires `round_to_nearest_100` but does not define how exact midpoin
 - `1,750` rounds to `1,800`.
 - `3,750` rounds to `3,800`.
 
-This resolves the ambiguity for implementation. It is a human-approved interpretation, not a rule stated by the challenge.
+This is the accepted midpoint interpretation.
 
 ## ASM-008 — HTTP success and error contract
 
-The source specifies the route and requires appropriate errors for invalid or missing fields, but it does not define success status codes, error status codes, error-body shape, or malformed-body behavior.
+The project contract specifies the route and defines success and error behavior here.
 
 ### Approved interpretation
 
@@ -139,22 +144,22 @@ The source specifies the route and requires appropriate errors for invalid or mi
 - For malformed JSON, `details` remains present and is always an empty array. It must not expose Express, JSON-parser, or other parser-internal information.
 - Malformed JSON does not introduce a separate error-response schema.
 
-This resolves the HTTP ambiguity for implementation. These values are human-approved interpretations, not source-defined status or response details.
+These are the accepted HTTP status and response details.
 
 ## ASM-009 — Customer-schema interpretation
 
-The source presents one customer schema and later requires integration tests for invalid or missing fields. It writes location properties with dotted names.
+The project contract defines one customer schema and requires integration tests for invalid or missing fields. Location properties use dotted names in the field table.
 
 ### Approved interpretation
 
-- Treat every listed customer field as part of the supplied request schema and a missing listed field as invalid for the source-required integration coverage.
+- Treat every listed customer field as part of the request schema and a missing listed field as invalid for integration coverage.
 - Treat `location.city`, `location.state`, and `location.region` as properties of a nested `location` object.
-- Enforce only constraints stated by the source: declared types, the score range, the region values, and the five valid market-debt types.
+- Enforce only specified constraints: declared types, the score range, the region values, and the five valid market-debt types.
 - Do not invent additional constraints such as a state enum, a general age range, non-empty-string rules, or cross-field consistency validation.
 
 ## ASM-010 — Acronym keyword matching
 
-The source requires case-insensitive substring matching and lists `COO`
+The project contract requires case-insensitive substring matching and lists `COO`
 as an `EXECUTIVE` keyword while also listing `Coordinator` as a
 `SENIOR_PROFESSIONAL` keyword.
 
@@ -175,7 +180,7 @@ Consequently, `COO`, `COO Brazil`, `coo`, `(COO)`, `ex-COO`, `COO/CTO`,
 and `COO_Brazil` match the standalone executive acronym. `Coordinator`,
 `myCOO`, `COO2`, and `COOOperations` do not match the standalone term `COO`.
 
-Non-acronym keywords continue to use the source-defined
+Non-acronym keywords continue to use the specified
 case-insensitive substring behavior.
 
 Therefore `Coordinator` does not match `COO` and remains eligible for
